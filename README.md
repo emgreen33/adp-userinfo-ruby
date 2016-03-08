@@ -208,8 +208,6 @@ Documentation on the individual API calls provided by the library is automatical
 # not applicable
 ```
 
-The generated documentation can be viewed by opening adp_userinfo/docs/_build/html/index.html in your browser.
-
 ## Tests ##
 
 Automated unit tests are available in tests folder. To run the tests, please complete the following steps.
@@ -218,7 +216,7 @@ Automated unit tests are available in tests folder. To run the tests, please com
 rake spec
 ```
 
-The above will also display code coverage information. To generate an html version of the code coverage report, please complete the following steps.
+The above will also display tests & code coverage information. 
 
 ```
 # not applicable
