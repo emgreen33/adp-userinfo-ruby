@@ -1,0 +1,128 @@
+<div class="menu">
+  <p>
+    <strong>Authorization </strong><br/>
+    <a href="/client_credentials" >Client Credential</a>  &nbsp; &nbsp;
+    <span href="authorization_code" >Authentication Code</span>
+  </p>
+</div>
+
+<div class="content">
+  <ol>
+    <li><b>1.</b>
+      <% if session["AuthorizationCode"].nil? %>
+          <a href="/authorization_code/login">Login</a>
+        <% else %>
+        <a>Loged in</a>
+      <% end %>
+    <br/>
+    <code>
+<pre>
+authorizationcode_config = AuthorizationCodeConfiguration.new(config);
+connection = ADPApiConnectionFactory::createConnection(authorizationcode_config)
+authorizationurl = connection.get_authorization_url
+redirect authorizationurl unless authorizationurl.nil?
+</pre>
+    </code>
+    </li>
+    <br/>
+    <li><b>2.</b>
+      <% if session["AuthorizationCode"].nil? || session["AuthorizationCode"].connection_configuration.authorizationCode.nil? %>
+          <a>Get Token</a>
+      <% else %>
+          <a href="/authorization_code/get_token">Get Token</a>
+      <% end %>
+      <br/>
+      <code>
+<pre>
+#store callback code
+connection.connection_configuration.authorizationCode = params[:code]
+#then connect
+connection.connect()
+</pre>
+      </code>
+    </li>
+      <% if session["AuthorizationCode"].nil? || session["AuthorizationCode"].connection_configuration.authorizationCode.nil? || session["AuthorizationCode"].access_token.nil? %>
+        <br/>
+      <% else %>
+        <br/>
+        <li><b>3.</b>
+          <a href="/authorization_code/get_userinfo">Get UserInfo</a>
+          <br/>
+          <code>
+<pre>
+#create new helper with a valid, connected connection
+helper = UserInfoHelper.new(connection)
+#then get the data and put it in a user defined PORO (plain old Ruby Object)
+json_data = helper.get_user_info()
+results[:userinfo] = UserInfo.new(json_data)
+</pre>
+          </code>
+          </li>
+      <% end %>
+    <!--
+    <li><b>3.</b> <a>Get UserInfo</3.a></li>
+    <br/>
+    -->
+
+    <% if !(session["AuthorizationCode"].nil? || session["AuthorizationCode"].connection_configuration.authorizationCode.nil?) %>
+
+        <li><b>4.</b>
+          <a href="/authorization_code/logout">Logout</a>
+          <code>
+
+            connection.logout()
+
+          </code>
+        </li>
+    <% end %>
+
+  </ol>
+
+  <p>
+   <% if (!(session["AuthorizationCode"].nil? || session["AuthorizationCode"].connection_configuration.authorizationCode.nil? ||  view_bag[:userinfo].nil?)) %>
+    <article style="border: 1px ridge #ccc;">
+      <table class="success">
+        <tr><th>Sub</th>              <td class="truncate"><p><%= view_bag[:userinfo].sub %></p></td></tr>
+        <tr><th>Organization OID</th> <td><%= view_bag[:userinfo].organizationOID %></td></tr>
+        <tr><th>Associate ID</th>     <td><%= view_bag[:userinfo].associateOID %></td></tr>
+        <tr><th>Given Name</th>       <td><%= view_bag[:userinfo].givenName %></td></tr>
+        <tr><th>Family Name</th>      <td><%= view_bag[:userinfo].familyName %></td></tr>
+        <tr><th>Name</th>             <td><%= view_bag[:userinfo].name %></td></tr>
+        <tr><th>Email</th>            <td><%= view_bag[:userinfo].email %></td></tr>
+      </table>
+      <!-- <b>Picture</b>          <dd>@Model.picture</dd> -->
+    </article>
+    <% end %>
+  </p>
+</div>
+
+<div class="sidebar">
+  <h3>Results...</h3>
+  <ul>
+    <!--
+    <li><b>Ruby:</b> <%= RUBY_VERSION %></li>
+    <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
+    <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
+    <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
+    -->
+    <% if session["AuthorizationCode"].nil?  %>
+        <li><b>Access token:</b> not logged in</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+    <% else %>
+        <li><b>Authorization code:</b> <%= session["AuthorizationCode"].connection_configuration.authorizationCode %> </li>
+        <% unless session["AuthorizationCode"].access_token.nil? %>
+            <li><b>Access token:</b> <%= session["AuthorizationCode"].access_token.token %> </li>
+            <li><b>Token type:</b> <%= session["AuthorizationCode"].access_token.token_type %> </li>
+            <li><b>Expires in:</b> <%= session["AuthorizationCode"].access_token.expires_in %> </li>
+            <li><b>Scope:</b> <%= session["AuthorizationCode"].access_token.scope %> </li>
+            <li><b>Expires on:</b> <%= session["AuthorizationCode"].access_token.expires_on %> </li>
+        <% end %>
+    <% end %>
+  </ul>
+  <div class="results_footer" style="">
+    <a href="https://github.com/adplabs/adp-userinfo-ruby.git"><img class="sidebar_logo" src="/images/ADP_logo_tagline.png" alt="Marketplace/Ruby/Library" /></a>
+  </div>
+</div>

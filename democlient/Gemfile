@@ -1,0 +1,16 @@
+source "https://rubygems.org/"
+
+# adp library
+gem "adp-connection"
+gem "adp-product-userinfo"
+
+# App Stack
+gem "sinatra", "~> 1.4"
+gem "sinatra-config-file"
+
+
+group :development do
+  gem "rake", "~> 10.0"
+  gem "minitest", "~> 5.2"
+  gem "rack-test", "~> 0.6"
+end
