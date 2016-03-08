@@ -200,11 +200,56 @@ end
 ```
 
 
-## Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/adplabs/adp-connection-ruby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the ADP Marketplace, ADP Inc. code of conduct.
+## API Documentation ##
+
+Documentation on the individual API calls provided by the library is automatically generated from the library code. To generate the documentation, please complete the following steps:
+
+```
+# not applicable
+```
+
+The generated documentation can be viewed by opening adp_userinfo/docs/_build/html/index.html in your browser.
+
+## Tests ##
+
+Automated unit tests are available in tests folder. To run the tests, please complete the following steps.
+
+```
+rake spec
+```
+
+The above will also display code coverage information. To generate an html version of the code coverage report, please complete the following steps.
+
+```
+# not applicable
+```
+
+The resulting report can be viewed by opening htmlcov/index.html in your browser.
+
+## Dependencies ##
+
+This library has the following **install** dependencies. These are installed automatically as part of the 'make setup' or 'gem install adp-product-userinfo' if they don't exist.
+
+* json
+* adp-connection
+
+This library has the following **development/test** dependencies. These are installed automatically as part of the 'make setup' if they don't exist.
+
+* bundler
+* rake
+* rspec
+
+## Contributing ##
+
+To contribute to the library, please generate a pull request. Before generating the pull request, please insure the following:
+
+1. Appropriate unit tests have been updated or created.
+2. Code coverage on the unit tests must be no less than 95%.
+3. Your code updates have been fully tested.
+4. Update README.md and API documentation as appropriate.
 
 Author: Junior Napier
 
-## License
+## License ##
 The gem is available as open source under the terms of the Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
 
