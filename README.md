@@ -11,7 +11,7 @@ The ADP Userinfo Product Client Library is used to obtain basic information abou
 There are two ways of installing and using this library:
 
   - Clone the repo from Github: This allows you to access the raw source code of the library as well as provide the ability to run the sample demo client application and view the Library documentation
-  - Install gem from RubyGems.org(https://github.com/adplabs/adp-userinfo-ruby): When you are ready to use the library in your own application use this method to install it using gem/bundle
+  - Install gem from package store RubyGems.org(https://github.com/adplabs/adp-userinfo-ruby): When you are ready to use the library in your own application use this method to install it using gem/bundle
 
 
 **Clone from Github**
@@ -51,7 +51,7 @@ This starts an HTTP server on port 8889 (this port must be unused to run the sam
 ***
 
 
-**Clone from Github**
+**Install gem from package store RubyGems.org**
 
 Add this line to your application's Gemfile:
 
@@ -219,7 +219,9 @@ Automated unit tests are available in tests folder. To run the tests, please com
 rake spec
 ```
 
-The above will also display tests & code coverage information. 
+The above will also display tests results. 
+
+## Code Coverage ##
 
 ```
 # not applicable
@@ -229,12 +231,12 @@ The resulting report can be viewed by opening htmlcov/index.html in your browser
 
 ## Dependencies ##
 
-This library has the following **install** dependencies. These are installed automatically as part of the 'make setup' or 'gem install adp-product-userinfo' if they don't exist.
+This library has the following **install** dependencies. These are installed automatically as part of the 'bundle install' or 'gem install adp-product-userinfo' if they don't exist.
 
 * json
 * adp-connection
 
-This library has the following **development/test** dependencies. These are installed automatically as part of the 'make setup' if they don't exist.
+This library has the following **development/test** dependencies. These are installed automatically as part of the 'bundle install' if they don't exist.
 
 * bundler
 * rake
