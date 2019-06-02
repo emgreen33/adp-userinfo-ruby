@@ -1,7 +1,7 @@
 source "https://rubygems.org/"
 
 # adp library
-gem "adp-connection"
+gem "adp-connection", git: 'https://github.com/emgreen33/adp-connection-ruby'
 gem "adp-product-userinfo"
 
 # App Stack

@@ -11,7 +11,7 @@ module Adp
         # @param [Object] urlmap
         def initialize(conn, urlmap = [])
 
-          raise ConnectionException, "Connection error: invalid connection (null)" unless (!conn.nil?)
+          raise ::Adp::Connection::ConnectionException, "Connection error: invalid connection (null)" unless (!conn.nil?)
 
           self.connection = conn
           self.url_map = urlmap
@@ -24,10 +24,10 @@ module Adp
         def get_user_info
 
           #Checking if we have connection object
-          raise ConnectionException, "Connection error: not connected" unless !self.connection.nil?
+          raise ::Adp::Connection::ConnectionException, "Connection error: not connected" unless !self.connection.nil?
 
           #Checking if we are connected
-          raise ConnectionException, "Connection error: not connected" unless self.connection.is_connected_indicator?
+          raise ::Adp::Connection::ConnectionException, "Connection error: not connected" unless self.connection.is_connected_indicator?
 
           #Now get the adp data using #{@producturl}
           data = self.connection.get_adp_data(@producturl)
