@@ -1,13 +1,17 @@
+GIT
+  remote: https://github.com/emgreen33/adp-connection-ruby
+  revision: 56a93c17947d8bb849b119ac7f843a9ca4228d1e
+  specs:
+    adp-connection (0.1.5)
+      json (~> 2.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    adp-connection (0.1.1)
-      json (~> 1.8)
     adp-product-userinfo (0.1.0)
       adp-connection
-      json (~> 1.8)
     backports (3.6.8)
-    json (1.8.3)
+    json (2.2.0)
     minitest (5.8.4)
     multi_json (1.11.2)
     rack (1.6.4)
@@ -35,7 +39,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  adp-connection
+  adp-connection!
   adp-product-userinfo
   minitest (~> 5.2)
   rack-test (~> 0.6)
@@ -44,4 +48,4 @@ DEPENDENCIES
   sinatra-config-file
 
 BUNDLED WITH
-   1.11.2
+   2.0.1
